@@ -1,6 +1,6 @@
 # projekt-a2-I
 
-<h1>Overfør en database</h1>
+<h2>Overfør en database</h2>
 Skriv dette ind i  terminalen, når du har tændt mongodb
 
 <pre>	mongodump -d <databaseNavn> </pre>
