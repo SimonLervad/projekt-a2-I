@@ -80,5 +80,42 @@ module.exports = {
                 res.end();
             });
         });
+    },
+
+    continents(req, res, asset) {
+        asset = asset.substring(1);
+        console.log("this is: " + asset);
+        const mongo = require('mongodb');
+        const dbname = "world";
+        const constr = `mongodb://localhost:27017`;
+
+        mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true},function (error, con) {
+            if (error) {
+                throw error;
+            }
+            const db = con.db(dbname);                  // make dbname the current db
+            /* Retrieve,
+             * reads cities from the database
+             */
+            db.collection(asset).find().toArray(function (err, city) {
+                if (err) {
+                    throw err;
+                }
+                res.writeHead(httpStatus.OK, {                  // yes, write relevant header
+                    "Content-Type": "text/html; charset=utf-8"
+                });
+                if (asset === "country") {
+                    res.write(experimental1.cities(city));           // home made templating for native node
+                } 
+                if (asset === "city") {
+                    res.write(experimental2.cities(city));           // home made templating for native node
+                }
+                if (asset === "language") {
+                    res.write(experimental3.cities(city));           // home made templating for native node
+                }
+                con.close();
+                res.end();
+            });
+        });
     }
 }
