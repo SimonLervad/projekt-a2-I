@@ -8,6 +8,8 @@ const httpStatus = require("http-status-codes");
 const lib = require("../private/libWebUtil");           // home grown utilities
 const experimental = require("../private/myTemplater"); // highly experimental template
 const experimental1 = require("../private/myCities"); // highly experimental template
+const experimental2 = require("../private/myCountry"); // highly experimental template
+const experimental3 = require("../private/myLang"); // highly experimental template
 
 const goError = function(res) {
     res.writeHead(httpStatus.NOT_FOUND, {   // http page not found, 404
@@ -43,7 +45,7 @@ module.exports = {
         res.write(experimental.receipt(obj));           // home made templating for native node
     },
 
-    findCounty(req, res) {
+    findCountry(req, res) {
         const mongo = require('mongodb');
         const dbname = "world";
         const constr = `mongodb://localhost:27017`;
@@ -63,7 +65,7 @@ module.exports = {
                 res.writeHead(httpStatus.OK, {                  // yes, write relevant header
                     "Content-Type": "text/html; charset=utf-8"
                 });
-                res.write(experimental1.cities(city));           // home made templating for native node
+                res.write(experimental2.cities(city));           // home made templating for native node
                 
                 con.close();
                 res.end();
@@ -117,7 +119,7 @@ module.exports = {
                 res.writeHead(httpStatus.OK, {                  // yes, write relevant header
                     "Content-Type": "text/html; charset=utf-8"
                 });
-                res.write(experimental1.cities(city));           // home made templating for native node
+                res.write(experimental3.cities(city));           // home made templating for native node
                 
                 con.close();
                 res.end();
