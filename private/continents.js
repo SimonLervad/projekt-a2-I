@@ -41,52 +41,108 @@ const cities = function(obj, obj2, obj3, asset) {
         // dynamic content goes here
 
     let htmlbot = `</div>
+    <script src="script.js"></script>
     </body>
 </html>`;
-    let dynamic = "";
     let countries = "";
     for (var i = 0; i < obj.length; i++) {
         if (obj[i].continent === h1) {
-            let title = `<div><h2>${obj[i].name}</h2></div>`;
+            let country = `
+                <h1>
+                    Countries
+                </h1>
+                <div class="countries">
+                    <h2>
+                        ${obj[i].name}
+                    </h2>
+                    <div class="hiddenCountry">
+                        <table>
+                            <tr>
+                                <td>Continent</td>
+                                <td>${obj[i].continent}</td>
+                            </tr>
+                            <tr>
+                                <td>Area</td>
+                                <td>${obj[i].area}</td>
+                            </tr>
+                            <tr>
+                                <td>Population</td>
+                                <td>${obj[i].population}</td>
+                            </tr>
+                            <tr>
+                                <td>Government form</td>
+                                <td>${obj[i].governmentForm}</td>
+                            </tr>
+                        </table>
+                    `;
+            for (var j = 0; j < obj2.length; j++) {
+                if (obj2[j].country === obj[i].name) {
+                    country += `
+                    <h1>
+                        Cities
+                    </h1>
+                        <div class="cities">
+                            <h2>
+                                ${obj2[j].name}
+                            </h2>
+                            <div class="hiddenCity">
+                                <table>
+                                    <tr>
+                                        <td>Is capital</td>
+                                        <td>${obj2[j].isCapital}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Population</td>
+                                        <td>${obj2[j].population}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Country</td>
+                                        <td>${obj2[j].country}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                } 
+            }
+            for (var q = 0; q < obj3.length; q++) {
+                if (obj3[q].country === obj[i].name) {
+                    console.log("test");
+                    country += `
+                        <h1>
+                            Spoken languages
+                        </h1>
+                        <div class="language">
+                            <h2>
+                                ${obj3[q].language}
+                            </h2>
+                            <div class="hiddenLang">
+                                <table>
+                                    <tr>
+                                        <td>Country</td>
+                                        <td>${obj3[q].country}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speakers</td>
+                                        <td>${obj3[q].speakers}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Is official</td>
+                                        <td>${obj3[q].isOfficial}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    `;
+                } 
+            }
+
+            countries += country;
         }
-       
-        /*
-        let heading = `<h2>${obj[i].continent}</h2>\n`;
-        let name = `<p>Name: ${obj[i].name}</p>\n`;
-        let continent = `<p>Continent: ${obj[i].continent}</p>\n`;
-        let area = `<p>Area: ${obj[i].area}</p>\n`;
-        let population = `<p>Population: ${obj[i].population}</p>\n`;
-        let governmentForm = `<p>The goverment form: ${obj[i].governmentForm}</p>\n`;
-        dynamic += heading;
-        dynamic += name;
-        dynamic += continent;
-        dynamic += area;
-        dynamic += population;
-        dynamic += governmentForm;
-        */
-        countries += title;
     }
-    for (var i = 0; i < obj2.length; i++) {
-        let name = `<h2>${obj2[i].name}</h2>\n`;
-        let isCapital = `<p>Name: ${obj2[i].isCapital}</p>\n`;
-        let population = `<p>Continent: ${obj2[i].population}</p>\n`;
-        let country = `<p>Area: ${obj2[i].country}</p>\n`;
-        dynamic += name;
-        dynamic += isCapital;
-        dynamic += population;
-        dynamic += country;
-    }
-    for (var i = 0; i < obj3.length; i++) {
-        let country = `<h2>${obj3[i].country}</h2>\n`;
-        let language = `<p>Name: ${obj3[i].language}</p>\n`;
-        let speakers = `<p>Continent: ${obj3[i].speakers}</p>\n`;
-        let isOfficial = `<p>Area: ${obj3[i].isOfficial}</p>\n`;
-        dynamic += country;
-        dynamic += language;
-        dynamic += speakers;
-        dynamic += isOfficial;
-    }
-    return htmltop + countries + dynamic + htmlbot;
+    return htmltop + countries + htmlbot;
 }
 
 exports.cities = cities;

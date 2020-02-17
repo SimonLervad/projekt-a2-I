@@ -73,12 +73,11 @@ main {
 	position:relative;
 	width:1100px;
 	background-color:#f2f2f2;
-	height:300px;
 	margin:auto;
 	padding:25px;
 }
 
-#body h1 {
+#body h1:nth-child(1) {
 	text-align:center;
 	width:80%;
 	margin:auto;
@@ -86,10 +85,34 @@ main {
 	padding:10px;
 	border-bottom:1px solid grey;
 }
+#body h1 {
+	text-align:center;
+}
 
 .countries {
 	width:80%;
 	border:1px solid black;
 	margin:10px auto;
 	text-align:center;
+}
+.countries table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 75%;
+  margin:auto;	
+}
+
+.countries td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.countries tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.hiddenCountry {
+	height:100px;
+	overflow:hidden;
 }
