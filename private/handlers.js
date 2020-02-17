@@ -7,8 +7,8 @@ const fs = require("fs");                           // file system access
 const httpStatus = require("http-status-codes");
 const lib = require("../private/libWebUtil");           // home grown utilities
 const experimental = require("../private/myTemplater"); // highly experimental template
-const experimental1 = require("../private/myCities"); // highly experimental template
-const experimental2 = require("../private/myCountry"); // highly experimental template
+const experimental1 = require("../private/myCountry"); // highly experimental template
+const experimental2 = require("../private/myCities"); // highly experimental template
 const experimental3 = require("../private/myLang"); // highly experimental template
 
 const goError = function(res) {
@@ -45,7 +45,9 @@ module.exports = {
         res.write(experimental.receipt(obj));           // home made templating for native node
     },
 
-    findCountry(req, res) {
+    dbRead(req, res, asset) {
+        asset = asset.substring(1);
+        console.log("this is: " + asset);
         const mongo = require('mongodb');
         const dbname = "world";
         const constr = `mongodb://localhost:27017`;
@@ -58,69 +60,22 @@ module.exports = {
             /* Retrieve,
              * reads cities from the database
              */
-            db.collection("country").find().toArray(function (err, city) {
+            db.collection(asset).find().toArray(function (err, city) {
                 if (err) {
                     throw err;
                 }
                 res.writeHead(httpStatus.OK, {                  // yes, write relevant header
                     "Content-Type": "text/html; charset=utf-8"
                 });
-                res.write(experimental2.cities(city));           // home made templating for native node
-                
-                con.close();
-                res.end();
-            });
-        });
-    },
-    findCity(req, res) {
-        const mongo = require('mongodb');
-        const dbname = "world";
-        const constr = `mongodb://localhost:27017`;
-
-        mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true},function (error, con) {
-            if (error) {
-                throw error;
-            }
-            const db = con.db(dbname);                  // make dbname the current db
-            /* Retrieve,
-             * reads cities from the database
-             */
-            db.collection("city").find().toArray(function (err, city) {
-                if (err) {
-                    throw err;
+                if (asset === "country") {
+                    res.write(experimental1.cities(city));           // home made templating for native node
+                } 
+                if (asset === "city") {
+                    res.write(experimental2.cities(city));           // home made templating for native node
                 }
-                res.writeHead(httpStatus.OK, {                  // yes, write relevant header
-                    "Content-Type": "text/html; charset=utf-8"
-                });
-                res.write(experimental1.cities(city));           // home made templating for native node
-                
-                con.close();
-                res.end();
-            });
-        });
-    },
-    findLang(req, res) {
-        const mongo = require('mongodb');
-        const dbname = "world";
-        const constr = `mongodb://localhost:27017`;
-
-        mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true},function (error, con) {
-            if (error) {
-                throw error;
-            }
-            const db = con.db(dbname);                  // make dbname the current db
-            /* Retrieve,
-             * reads cities from the database
-             */
-            db.collection("language").find().toArray(function (err, city) {
-                if (err) {
-                    throw err;
+                if (asset === "language") {
+                    res.write(experimental3.cities(city));           // home made templating for native node
                 }
-                res.writeHead(httpStatus.OK, {                  // yes, write relevant header
-                    "Content-Type": "text/html; charset=utf-8"
-                });
-                res.write(experimental3.cities(city));           // home made templating for native node
-                
                 con.close();
                 res.end();
             });
