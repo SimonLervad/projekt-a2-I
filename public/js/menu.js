@@ -29,7 +29,7 @@ let link2 = Object.create(Links);
 link2.init("Cities", "city");
 links.push(link2);
 let link4 = Object.create(Links);
-link4.init("Language", "lang");
+link4.init("Language", "language");
 links.push(link4);
 insert();
 }
