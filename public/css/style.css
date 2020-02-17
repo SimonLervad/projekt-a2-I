@@ -4,6 +4,7 @@
 body {
 	margin:0;
 	padding:0;
+	padding-top:100px;
 }
 #header {
 	position: fixed;
@@ -29,7 +30,6 @@ body {
 
 main {
 	position:relative;
-	margin-top:100px;
 	width:100%;
 	display:flex;
 	justify-content: space-around;
