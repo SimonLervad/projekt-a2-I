@@ -6,7 +6,7 @@ const cities = function(obj) {
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>McKilroy's Second Test Template</title>
+        <title>Languages</title>
         <link rel="stylesheet" href="side.css"/>
         <script src="menu.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -22,7 +22,7 @@ const cities = function(obj) {
     let dynamic = "";
 
     for (var i = 0; i < obj.length; i++) {
-       let country = `<p>Country: ${obj[i].country}</p>\n`;
+       let country = `<p><h2>Country: ${obj[i].country}</h2></p>\n`;
        let language = `<p>Language: ${obj[i].language}</p>\n`;
        let speakers = `<p>Speakers: ${obj[i].speakers}</p>\n`;
        let isOfficial = `<p>Is official: ${obj[i].isOfficial}</p>\n`;

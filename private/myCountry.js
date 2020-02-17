@@ -6,7 +6,7 @@ const cities = function(obj) {
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>My country</title>
+        <title>Countries</title>
         <link rel="stylesheet" href="side.css"/>
         <script src="menu.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
