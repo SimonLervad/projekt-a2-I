@@ -27,7 +27,7 @@ const routes = {                                    // register handles to route
         "/eu": handlers.continents,
         "/au": handlers.continents,
         "/an": handlers.continents,
-        "/about": handlers.getAndRespond,
+        "/testpost": handlers.getAndRespond,
         "/contact": handlers.getAndRespond,
         "js": handlers.getAndRespond,
         "css": handlers.getAndRespond,
