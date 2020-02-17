@@ -20,7 +20,7 @@ const cities = function(obj) {
 
     let dynamic = "";
     for (var i = 0; i < obj.length; i++) {
-        let heading = `<h1>${obj[i].continent}</h1>\n`;
+        let heading = `<h2>${obj[i].continent}</h2>\n`;
         let name = `<p>Name: ${obj[i].name}</p>\n`;
         let continent = `<p>Continent: ${obj[i].continent}</p>\n`;
         let area = `<p>Area: ${obj[i].area}</p>\n`;
