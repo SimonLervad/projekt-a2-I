@@ -10,17 +10,6 @@ const cities = function(obj) {
         <link rel="stylesheet" href="side.css"/>
     </head>
     <body>
-        <header>
-            <h1>Kilroy's Cities</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/side">Side</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
         <div>`;
 
     let htmlbot = `        </div>
@@ -28,8 +17,17 @@ const cities = function(obj) {
 </html>`;
 
     let dynamic = "";
-    dynamic += `<p><em>${obj[0].name}</em></p>`;
 
+    for (var i = 0; i < obj.length; i++) {
+        let name = `<p><h2>${obj[i].name}</h2></p>\n`;
+        let capital = `<p>${obj[i].isCapital}</p>\n`;
+        let population = `<p>${obj[i].population}</p>\n`;
+        let country = `<p>${obj[i].country}</p>\n`;
+        dynamic += name;
+        dynamic += capital;
+        dynamic += population;
+        dynamic += country;
+    } 
 
     return htmltop + dynamic + htmlbot;
 }

@@ -8,19 +8,10 @@ const cities = function(obj) {
         <meta charset="utf-8"/>
         <title>McKilroy's Second Test Template</title>
         <link rel="stylesheet" href="side.css"/>
+
     </head>
     <body>
-        <header>
-            <h1>Kilroy's Cities</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/side">Side</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+        
         <div>`;
 
     let htmlbot = `        </div>
@@ -28,7 +19,10 @@ const cities = function(obj) {
 </html>`;
 
     let dynamic = "";
-    dynamic += `<p><em>${obj[0].name}</em></p>`;
+    dynamic += `<h2>${obj[0].name}</h2>
+    <p><em>${obj[0].isCapital}</em></p>`;
+
+
 
 
     return htmltop + dynamic + htmlbot;
