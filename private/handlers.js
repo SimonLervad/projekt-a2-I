@@ -43,7 +43,7 @@ module.exports = {
         res.write(experimental.receipt(obj));           // home made templating for native node
     },
 
-    findCities(req, res) {
+    findCounty(req, res) {
         const mongo = require('mongodb');
         const dbname = "world";
         const constr = `mongodb://localhost:27017`;
@@ -57,6 +57,60 @@ module.exports = {
              * reads cities from the database
              */
             db.collection("country").find().toArray(function (err, city) {
+                if (err) {
+                    throw err;
+                }
+                res.writeHead(httpStatus.OK, {                  // yes, write relevant header
+                    "Content-Type": "text/html; charset=utf-8"
+                });
+                res.write(experimental1.cities(city));           // home made templating for native node
+                
+                con.close();
+                res.end();
+            });
+        });
+    },
+    findCity(req, res) {
+        const mongo = require('mongodb');
+        const dbname = "world";
+        const constr = `mongodb://localhost:27017`;
+
+        mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true},function (error, con) {
+            if (error) {
+                throw error;
+            }
+            const db = con.db(dbname);                  // make dbname the current db
+            /* Retrieve,
+             * reads cities from the database
+             */
+            db.collection("city").find().toArray(function (err, city) {
+                if (err) {
+                    throw err;
+                }
+                res.writeHead(httpStatus.OK, {                  // yes, write relevant header
+                    "Content-Type": "text/html; charset=utf-8"
+                });
+                res.write(experimental1.cities(city));           // home made templating for native node
+                
+                con.close();
+                res.end();
+            });
+        });
+    },
+    findLang(req, res) {
+        const mongo = require('mongodb');
+        const dbname = "world";
+        const constr = `mongodb://localhost:27017`;
+
+        mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true},function (error, con) {
+            if (error) {
+                throw error;
+            }
+            const db = con.db(dbname);                  // make dbname the current db
+            /* Retrieve,
+             * reads cities from the database
+             */
+            db.collection("language").find().toArray(function (err, city) {
                 if (err) {
                     throw err;
                 }
