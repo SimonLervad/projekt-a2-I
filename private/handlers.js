@@ -10,6 +10,7 @@ const experimental = require("../private/myTemplater"); // highly experimental t
 const experimental1 = require("../private/myCountry"); // highly experimental template
 const experimental2 = require("../private/myCities"); // highly experimental template
 const experimental3 = require("../private/myLang"); // highly experimental template
+const countryList = require("../private/continents"); // highly experimental template
 
 const goError = function(res) {
     res.writeHead(httpStatus.NOT_FOUND, {   // http page not found, 404
@@ -47,7 +48,6 @@ module.exports = {
 
     dbRead(req, res, asset) {
         asset = asset.substring(1);
-        console.log("this is: " + asset);
         const mongo = require('mongodb');
         const dbname = "world";
         const constr = `mongodb://localhost:27017`;
@@ -83,8 +83,6 @@ module.exports = {
     },
 
     continents(req, res, asset) {
-        asset = asset.substring(1);
-        console.log("this is: " + asset);
         const mongo = require('mongodb');
         const dbname = "world";
         const constr = `mongodb://localhost:27017`;
@@ -97,24 +95,41 @@ module.exports = {
             /* Retrieve,
              * reads cities from the database
              */
-            db.collection(asset).find().toArray(function (err, city) {
+            let obj;
+            let objTwo;
+            let objThree;
+            db.collection("country").find().toArray(function (err, data) {
                 if (err) {
                     throw err;
                 }
                 res.writeHead(httpStatus.OK, {                  // yes, write relevant header
                     "Content-Type": "text/html; charset=utf-8"
                 });
-                if (asset === "country") {
-                    res.write(experimental1.cities(city));           // home made templating for native node
-                } 
-                if (asset === "city") {
-                    res.write(experimental2.cities(city));           // home made templating for native node
-                }
-                if (asset === "language") {
-                    res.write(experimental3.cities(city));           // home made templating for native node
-                }
-                con.close();
-                res.end();
+                obj = data;
+                db.collection("city").find().toArray(function (err, data) {
+                    if (err) {
+                        throw err;
+                    }
+                    res.writeHead(httpStatus.OK, {                  // yes, write relevant header
+                        "Content-Type": "text/html; charset=utf-8"
+                    });
+                    objTwo = data;
+                    db.collection("language").find().toArray(function (err, data) {
+                        if (err) {
+                            throw err;
+                        }
+                        res.writeHead(httpStatus.OK, {                  // yes, write relevant header
+                            "Content-Type": "text/html; charset=utf-8"
+                        });
+                        objThree = data;
+                        console.log(obj);
+                        console.log(objTwo);
+                        console.log(objThree);
+                        res.write(countryList.cities(obj, objTwo, objThree));
+                        con.close();
+                        res.end();
+                    });
+                });
             });
         });
     }

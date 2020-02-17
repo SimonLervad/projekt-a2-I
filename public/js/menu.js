@@ -8,7 +8,6 @@ const menu = $("header");
 
 var insert = function () {
     for (let i = 1; i < links.length; i++) {
-        console.log(i);
         links[i].draw();
     }
 }
