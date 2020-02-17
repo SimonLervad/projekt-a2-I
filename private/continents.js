@@ -35,15 +35,22 @@ const cities = function(obj, obj2, obj3, asset) {
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <h1 id="title">${h1}</h1>
-        <div id="info">`;
+    <div id="body">
+        <h1>${h1}</h1>`;
 
-    let htmlbot = `        </div>
+        // dynamic content goes here
+
+    let htmlbot = `</div>
     </body>
 </html>`;
-
     let dynamic = "";
+    let countries = "";
     for (var i = 0; i < obj.length; i++) {
+        if (obj[i].continent === h1) {
+            let title = `<div><h2>${obj[i].name}</h2></div>`;
+        }
+       
+        /*
         let heading = `<h2>${obj[i].continent}</h2>\n`;
         let name = `<p>Name: ${obj[i].name}</p>\n`;
         let continent = `<p>Continent: ${obj[i].continent}</p>\n`;
@@ -56,6 +63,8 @@ const cities = function(obj, obj2, obj3, asset) {
         dynamic += area;
         dynamic += population;
         dynamic += governmentForm;
+        */
+        countries += title;
     }
     for (var i = 0; i < obj2.length; i++) {
         let name = `<h2>${obj2[i].name}</h2>\n`;
@@ -77,7 +86,7 @@ const cities = function(obj, obj2, obj3, asset) {
         dynamic += speakers;
         dynamic += isOfficial;
     }
-    return htmltop + dynamic + htmlbot;
+    return htmltop + countries + dynamic + htmlbot;
 }
 
 exports.cities = cities;

@@ -75,8 +75,21 @@ main {
 	background-color:#f2f2f2;
 	height:300px;
 	margin:auto;
+	padding:25px;
 }
 
-h1 {
-	color:black;
+#body h1 {
+	text-align:center;
+	width:80%;
+	margin:auto;
+	display:block;
+	padding:10px;
+	border-bottom:1px solid grey;
+}
+
+.countries {
+	width:80%;
+	border:1px solid black;
+	margin:10px auto;
+	text-align:center;
 }
