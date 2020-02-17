@@ -28,6 +28,7 @@ const routes = {                                    // register handles to route
         "/au": handlers.continents,
         "/an": handlers.continents,
         "/testpost": handlers.getAndRespond,
+        "/testdrop": handlers.getAndRespond,
         "/contact": handlers.getAndRespond,
         "js": handlers.getAndRespond,
         "css": handlers.getAndRespond,
@@ -92,7 +93,7 @@ exports.route = function(req, res, body) {          // routing
         } else if (req.url === "/na" || req.url === "/sa" || req.url === "/af" || req.url === "/eu" || req.url === "/as" || req.url === "/an" || req.url === "/au") {
             asset = req.url;
             routedUrl = "views/side.html";
-            routes[req.method][asset](req, res);
+            routes[req.method][asset](req, res, asset);
             return;
         } else if (req.url === "/contact" && req.method === "POST") {
             asset = req.url;

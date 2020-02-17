@@ -1,7 +1,30 @@
 /* myCities.js Home made experimental templating */
 "use strict";
 
-const cities = function(obj, obj2, obj3) {
+const cities = function(obj, obj2, obj3, asset) {
+    let h1 = "";
+    if (asset === "na") {
+        h1 = "North America"
+    }
+    if (asset === "sa") {
+        h1 = "South America"
+    }
+    if (asset === "af") {
+        h1 = "Africa"
+    }
+    if (asset === "eu") {
+        h1 = "Europe"
+    }
+    if (asset === "as") {
+        h1 = "Asia"
+    }
+    if (asset === "au") {
+       h1 = "Australia"
+    }
+    if (asset === "an") {
+        h1 = "Antarctica"
+    }
+    console.log(h1);
     let htmltop = `<!doctype html>
 <html>
     <head>
@@ -12,6 +35,7 @@ const cities = function(obj, obj2, obj3) {
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+        <h1 id="title">${h1}</h1>
         <div id="info">`;
 
     let htmlbot = `        </div>
@@ -53,8 +77,6 @@ const cities = function(obj, obj2, obj3) {
         dynamic += speakers;
         dynamic += isOfficial;
     }
-
-    
     return htmltop + dynamic + htmlbot;
 }
 

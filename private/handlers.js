@@ -86,6 +86,7 @@ module.exports = {
         const mongo = require('mongodb');
         const dbname = "world";
         const constr = `mongodb://localhost:27017`;
+        asset = asset.substring(1);
 
         mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true},function (error, con) {
             if (error) {
@@ -125,7 +126,7 @@ module.exports = {
                         console.log(obj);
                         console.log(objTwo);
                         console.log(objThree);
-                        res.write(countryList.cities(obj, objTwo, objThree));
+                        res.write(countryList.cities(obj, objTwo, objThree, asset));
                         con.close();
                         res.end();
                     });
