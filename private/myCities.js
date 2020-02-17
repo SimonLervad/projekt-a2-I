@@ -8,6 +8,9 @@ const cities = function(obj) {
         <meta charset="utf-8"/>
         <title>McKilroy's Second Test Template</title>
         <link rel="stylesheet" href="side.css"/>
+        <link rel="stylesheet" href="style.css"/>
+        <script src="menu.js"></script>
+
     </head>
     <body>
         <div>`;
