@@ -4,11 +4,7 @@
 body {
 	margin:0;
 	padding:0;
-<<<<<<< HEAD
 	padding-top:100px;
-=======
-	padding-top: 100px;
->>>>>>> dad9251f77ee0ff5b9331b92ea52fff13135601b
 }
 #header {
 	position: fixed;
