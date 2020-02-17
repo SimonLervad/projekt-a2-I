@@ -1,0 +1,29 @@
+{
+  "name": "projekt-a2-i",
+  "version": "1.0.0",
+  "description": "World project",
+  "main": "main.js",
+  "bin": {
+    "projekt-a2-i": "server.js"
+  },
+  "dependencies": {
+    "mongodb": "^3.5.3",
+    "http-status-codes": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "checkpoint": "git add .  && git commit -F - && git push origin master ",
+    "pretest": "npm install",
+    "test": "node main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimonLervad/projekt-a2-I.git"
+  },
+  "author": "ARTS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimonLervad/projekt-a2-I/issues"
+  },
+  "homepage": "https://github.com/SimonLervad/projekt-a2-I#readme"
+}
