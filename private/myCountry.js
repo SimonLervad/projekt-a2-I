@@ -12,7 +12,8 @@ const cities = function(obj) {
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div id="info">`;
+        <div class="info">
+        <h1>Country</h1>`;
 
     let htmlbot = `        </div>
     </body>

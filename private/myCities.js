@@ -13,7 +13,8 @@ const cities = function(obj) {
 
     </head>
     <body>
-        <div>`;
+        <div class="info">
+        <h1>Cities</h1>`;
 
     let htmlbot = `        </div>
     </body>
