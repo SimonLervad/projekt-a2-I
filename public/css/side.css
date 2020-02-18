@@ -9,7 +9,7 @@ body{
     background-color: #fff;
 }
 
-.play {
+.play, .play1 {
   background-color: #eee;
   color: #444;
   cursor: pointer;
@@ -26,7 +26,7 @@ body{
   background-color: #ccc; 
 }
 
-.countries {
+.countries, .cities {
   padding: 0 18px;
   display: none;
   background-color: white;
