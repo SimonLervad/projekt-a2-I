@@ -54,6 +54,9 @@ const cities = function(obj, obj2, obj3, asset) {
             let country = `
                 <button class="play"><h2>${obj[i].name}</h2></button>
                 <div class="countries">
+                    <h1>
+                        ${obj[i].name}
+                    </h1>
                     <div class="hiddenCountry">
                         <table>
                             <tr>
@@ -74,29 +77,29 @@ const cities = function(obj, obj2, obj3, asset) {
                             </tr>
                         </table>
                     `;
-            for (var j = 0; j < obj2.length; j++) {  //cities
+            for (var j = 0; j < obj3.length; j++) {  //cities
                 if (obj2[j].country === obj[i].name) {
                     country += `
                     <h1>
-                        Cities
+                    Spoken languages
                     </h1>
-                        <div class="cities">
+                        <div class="language">
                             <h2>
-                                ${obj2[j].name}
+                                ${obj3[j].language}
                             </h2>
-                            <div class="hiddenCity">
+                            <div class="hiddenLang">
                                 <table>
                                     <tr>
-                                        <td>Is capital</td>
-                                        <td>${obj2[j].isCapital}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Population</td>
-                                        <td>${obj2[j].population}</td>
-                                    </tr>
-                                    <tr>
                                         <td>Country</td>
-                                        <td>${obj2[j].country}</td>
+                                        <td>${obj3[j].country}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speakers</td>
+                                        <td>${obj3[j].speakers}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Is official</td>
+                                        <td>${obj3[j].isOfficial}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -104,30 +107,30 @@ const cities = function(obj, obj2, obj3, asset) {
                     `;
                 }
             }
-            for (var q = 0; q < obj3.length; q++) {  //language
+            for (var q = 0; q < obj2.length; q++) {  //language
                 if (obj3[q].country === obj[i].name) {
                     console.log("test");
                     country += `
                         <h1>
-                            Spoken languages
+                           Cities
                         </h1>
-                        <div class="language">
+                        <div class="cities">
                             <h2>
-                                ${obj3[q].language}
+                                ${obj2[q].name}
                             </h2>
-                            <div class="hiddenLang">
+                            <div class="hiddenCity">
                                 <table>
                                     <tr>
+                                        <td>Is capital</td>
+                                        <td>${obj2[q].isCapital}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Population</td>
+                                        <td>${obj2[q].population}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Country</td>
-                                        <td>${obj3[q].country}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Speakers</td>
-                                        <td>${obj3[q].speakers}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Is official</td>
-                                        <td>${obj3[q].isOfficial}</td>
+                                        <td>${obj2[q].country}</td>
                                     </tr>
                                 </table>
                             </div>
