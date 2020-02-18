@@ -111,8 +111,9 @@ main {
 .countries tr:nth-child(even) {
   background-color: #dddddd;
 }
-
+/*
 .hiddenCountry {
 	height:100px;
 	overflow:hidden;
 }
+*/
