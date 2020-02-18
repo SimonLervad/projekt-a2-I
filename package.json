@@ -7,8 +7,10 @@
     "projekt-a2-i": "server.js"
   },
   "dependencies": {
+    "http-status-codes": "^1.4.0",
     "mongodb": "^3.5.3",
-    "http-status-codes": "^1.4.0"
+    "querystring": "^0.2.0",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {},
   "scripts": {

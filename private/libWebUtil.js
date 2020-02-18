@@ -16,10 +16,10 @@ const makeWebArrays = function (req, data) {
     let GET = querystring.parse(qs);
     let POST = querystring.parse(data);
     console.log(getJSONString({ GET, POST }));
-    
+
     let time = makeLogEntry(req);
 
-    return {time, GET, POST};
+    return {POST};
 }
 
 const makeLogEntry = function(req) {

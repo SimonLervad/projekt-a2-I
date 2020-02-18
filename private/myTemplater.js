@@ -1,41 +1,48 @@
 /* myTemplater.js Home made experimental templating */
 "use strict";
-
 const fs = require("fs");
 
 const receipt = function(obj) {
-    let html = `<!doctype html>
+    let htmltop = `<!doctype html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Contact</title>
+        <meta charset="utf-8"/>
+        <title>Cities</title>
+        <link rel="stylesheet" href="side.css"/>
         <link rel="stylesheet" href="style.css"/>
+        <script src="menu.js"></script>
+
     </head>
     <body>
-        <h1>The bakery's Receipt</h1>
-        <div id="placeholder">
-        </div>
-        <div>
-            <h3>We will get back to you.</h3>
-            <p><a href="/">Return to front page</a><p>
-        </div>
-    </body>
-    <script>
-    'use strict';
-        const reqListener = function() {
-            console.log(this.responseText);
-            document.getElementById("placeholder").innerHTML = this.responseText;
-        }
+        <div>`;
 
-        var oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", reqListener);
-        oReq.open("GET", "./user.json");
-        oReq.send();
-    </script>
+    let htmlbot = `        </div>
+    </body>
 </html>`;
-    return html;
+
+    let dynamic = `
+
+    <p>You entered the following</p>
+            <h3>Country</h3>
+            <p>${obj.POST.country}</p>
+
+            <h3>Continent</h3>
+            <p>${obj.POST.continent}</p>
+
+            <h3>Area</h3>
+            <pre>${obj.POST.area}</pre>
+
+            <h3>Population</h3>
+            <pre>${obj.POST.population}</pre>
+
+            <h3>Governmentform</h3>
+            <pre>${obj.POST.governmenform}</pre>
+
+    `;
+
+
+
+    return htmltop + dynamic + htmlbot;
 }
 
 exports.receipt = receipt;

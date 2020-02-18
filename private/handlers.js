@@ -12,6 +12,7 @@ const experimental2 = require("../private/myCities"); // highly experimental tem
 const experimental3 = require("../private/myLang"); // highly experimental template
 const countryList = require("../private/continents"); // highly experimental template
 
+
 const goError = function(res) {
     res.writeHead(httpStatus.NOT_FOUND, {   // http page not found, 404
         "Content-Type": "text/html; charset=utf-8"
@@ -44,6 +45,40 @@ module.exports = {
             "Content-Type": "text/html; charset=utf-8"
         });
         res.write(experimental.receipt(obj));           // home made templating for native node
+
+        const mongo = require('mongodb');
+        const dbname = "world";
+        const constr = `mongodb://localhost:27017`;
+        let newCountry = {name: obj.POST.name, continent: obj.POST.continent, area: obj.POST.area, population: obj.POST.population, governmentForm: obj.POST.governmenform }
+
+
+
+
+        mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true}, function (error, con) {
+            if (error) {
+                throw error;
+            }
+            console.log(`Connected to server`);
+            const db = con.db(dbname);                  // make dbname the current db
+            /* Update,
+             * updates/inserts city in the database
+             */
+
+            db.collection("country").updateOne(newCountry, {"$set": obj}, {upsert: true}, function (err, collection) {
+                if (err) {
+                    throw err;
+                }
+                console.log("City inserted/updated");
+                con.close();
+            });
+        });
+
+
+
+
+
+
+
     },
 
     dbRead(req, res, asset) {
@@ -61,8 +96,10 @@ module.exports = {
              * reads cities from the database
              */
 
+
+
             db.collection(asset).find().sort({continent : 1, country : 1, }).toArray(function (err, city) {
-                
+
                 if (err) {
                     throw err;
                 }
@@ -71,7 +108,7 @@ module.exports = {
                 });
                 if (asset === "country") {
                     res.write(experimental1.cities(city));           // home made templating for native node
-                } 
+                }
                 if (asset === "city") {
                     res.write(experimental2.cities(city));           // home made templating for native node
                 }

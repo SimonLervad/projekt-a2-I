@@ -1,5 +1,5 @@
 /*
- * File Name is  : form.js
+ * File Name is  : form.js to use with views/testpost.html
  * inserts or updates a mongo collection
  */
 'use strict';
@@ -7,10 +7,6 @@
 const mongo = require('mongodb');
 const dbname = "world";
 const constr = `mongodb://localhost:27017`;
-
-let data = process.argv[2];
-let obj = JSON.parse(data);
-let que = {name: obj.name};
 
 mongo.connect(
     constr, { useNewUrlParser: true, useUnifiedTopology: true},
@@ -20,16 +16,16 @@ mongo.connect(
     }
     console.log(`Connected to server`);
     const db = con.db(dbname);                  // make dbname the current db
-    /* Update,
-     * updates/inserts city in the database
+    /* Create,
+     * inserts cities into the database
      */
+     let newCountry = {"name": name.POST.value, "continent": continent.POST.value, "area": area.POST.value, "population": population.POST.value, "governmentForm": governmenform.POST.value }
 
-    db.collection("city").updateOne(
-        que, {"$set": obj}, {upsert: true}, function (err, collection) {
-        if (err) {
-            throw err;
-        }
-        console.log("City inserted/updated");
-        con.close();
-    });
-});
+     db.collection("country").insertOne(obj, function (err, collection) {
+         if (err) {
+             throw err;
+         }
+         console.log("Country inserted");
+         con.close();
+     });
+ });
