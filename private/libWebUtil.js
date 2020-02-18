@@ -19,7 +19,7 @@ const makeWebArrays = function (req, data) {
 
     let time = makeLogEntry(req);
 
-    return {POST};
+    return {GET, POST};
 }
 
 const makeLogEntry = function(req) {

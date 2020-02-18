@@ -49,10 +49,13 @@ module.exports = {
         const mongo = require('mongodb');
         const dbname = "world";
         const constr = `mongodb://localhost:27017`;
-        let newCountry = {name: obj.POST.name, continent: obj.POST.continent, area: obj.POST.area, population: obj.POST.population, governmentForm: obj.POST.governmenform }
-
-
-
+        let newCountry = { name: obj.POST.country, 
+                           continent: obj.POST.continent, 
+                           area: obj.POST.area, 
+                           population: obj.POST.population, 
+                           governmentForm: obj.POST.governmenform 
+                        };
+        let query = { name: newCountry.name };
 
         mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true}, function (error, con) {
             if (error) {
@@ -64,7 +67,7 @@ module.exports = {
              * updates/inserts city in the database
              */
 
-            db.collection("country").updateOne(newCountry, {"$set": obj}, {upsert: true}, function (err, collection) {
+            db.collection("country").updateOne(query, {"$set": newCountry}, {upsert: true}, function (err, collection) {
                 if (err) {
                     throw err;
                 }
