@@ -78,7 +78,7 @@ const cities = function(obj, obj2, obj3, asset) {
                         </table>
                     `;
             for (var j = 0; j < obj3.length; j++) {  //sprog
-                if (obj2[j].country === obj[i].name) {
+                if (obj3[j].country === obj[i].name) {
                     country += `
                     <h1>
                     Spoken languages
