@@ -27,10 +27,7 @@ const cities = function(obj) {
        let speakers = `<p>Speakers: ${obj[i].speakers}</p>\n`;
        let isOfficial = `<p>Is official: ${obj[i].isOfficial}</p>\n`;
 
-       dynamic += country;
-       dynamic += language;
-       dynamic += speakers;
-       dynamic += isOfficial;
+       dynamic += country + language + speakers + isOfficial;
 
    }
 

@@ -61,7 +61,7 @@ module.exports = {
              * reads cities from the database
              */
 
-            db.collection(asset).find().sort({continent : 1}).toArray(function (err, city) {
+            db.collection(asset).find().sort({continent : 1, country : 1, }).toArray(function (err, city) {
                 
                 if (err) {
                     throw err;

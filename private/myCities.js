@@ -26,10 +26,7 @@ const cities = function(obj) {
         let capital = `<p>Is capital: ${obj[i].isCapital}</p>\n`;
         let population = `<p>Population: ${obj[i].population}</p>\n`;
         let country = `<p>Country: ${obj[i].country}</p>\n`;
-        dynamic += name;
-        dynamic += capital;
-        dynamic += population;
-        dynamic += country;
+        dynamic += name + capital + population + country;
     } 
 
     return htmltop + dynamic + htmlbot;
