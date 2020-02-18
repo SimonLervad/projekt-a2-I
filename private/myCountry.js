@@ -26,12 +26,7 @@ const cities = function(obj) {
         let area = `<p>Area: ${obj[i].area}</p>\n`;
         let population = `<p>Population: ${obj[i].population}</p>\n`;
         let governmentForm = `<p>The goverment form: ${obj[i].governmentForm}</p>\n`;
-        dynamic += heading;
-        dynamic += name;
-        dynamic += continent;
-        dynamic += area;
-        dynamic += population;
-        dynamic += governmentForm;
+        dynamic += heading + name + continent + area + population + governmentForm;
     }
     
     return htmltop + dynamic + htmlbot;
