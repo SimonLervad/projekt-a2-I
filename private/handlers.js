@@ -75,7 +75,7 @@ module.exports = {
                 con.close();
             });
         });
-
+        res.end();
 
 
 
