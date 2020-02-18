@@ -30,3 +30,19 @@ for (i = 0; i < el.length; i++) {
     }
   });
 }
+
+var el = document.getElementsByClassName("play1");
+var i;
+
+
+for (i = 0; i < el.length; i++) {
+  el[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var cities = this.nextElementSibling;
+    if (cities.style.display === "block") {
+      cities.style.display = "none";
+    } else {
+      cities.style.display = "block";
+    }
+  });
+}

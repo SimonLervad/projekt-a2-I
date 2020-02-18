@@ -114,7 +114,7 @@ const cities = function(obj, obj2, obj3, asset) {
                         <h1>
                            Cities
                         </h1>
-                        <button class="play"><h2>${obj2[i].name}</h2></button>
+                        <button class="play1"><h2>${obj2[i].name}</h2></button>
                         <div class="cities">
                             <div class="hiddenCity">
                                 <table>
