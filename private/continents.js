@@ -36,7 +36,11 @@ const cities = function(obj, obj2, obj3, asset) {
     </head>
     <body>
     <div id="body">
-        <h1>${h1}</h1>`;
+        <h1>${h1}</h1>
+        <h1>
+            Countries
+        </h1>
+        `;
 
         // dynamic content goes here
 
@@ -45,12 +49,10 @@ const cities = function(obj, obj2, obj3, asset) {
     </body>
 </html>`;
     let countries = "";
-    for (var i = 0; i < obj.length; i++) {
+    for (var i = 0; i < obj.length; i++) {  //countries
         if (obj[i].continent === h1) {
             let country = `
-                <h1>
-                    Countries
-                </h1>
+
                 <div class="countries">
                     <h2>
                         ${obj[i].name}
@@ -75,7 +77,7 @@ const cities = function(obj, obj2, obj3, asset) {
                             </tr>
                         </table>
                     `;
-            for (var j = 0; j < obj2.length; j++) {
+            for (var j = 0; j < obj2.length; j++) {  //cities
                 if (obj2[j].country === obj[i].name) {
                     country += `
                     <h1>
@@ -103,9 +105,9 @@ const cities = function(obj, obj2, obj3, asset) {
                             </div>
                         </div>
                     `;
-                } 
+                }
             }
-            for (var q = 0; q < obj3.length; q++) {
+            for (var q = 0; q < obj3.length; q++) {  //language
                 if (obj3[q].country === obj[i].name) {
                     console.log("test");
                     country += `
@@ -136,7 +138,7 @@ const cities = function(obj, obj2, obj3, asset) {
                     </div>
                 </div>
                     `;
-                } 
+                }
             }
 
             countries += country;
