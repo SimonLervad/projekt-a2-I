@@ -31,12 +31,12 @@ for (i = 0; i < el.length; i++) {
   });
 }
 
-var el = document.getElementsByClassName("play1");
+var el1 = document.getElementsByClassName("play1");
 var i;
 
 
-for (i = 0; i < el.length; i++) {
-  el[i].addEventListener("click", function() {
+for (i = 0; i < el1.length; i++) {
+  el1[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var cities = this.nextElementSibling;
     if (cities.style.display === "block") {

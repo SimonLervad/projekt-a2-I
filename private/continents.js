@@ -77,7 +77,7 @@ const cities = function(obj, obj2, obj3, asset) {
                             </tr>
                         </table>
                     `;
-            for (var j = 0; j < obj3.length; j++) {  //cities
+            for (var j = 0; j < obj3.length; j++) {  //sprog
                 if (obj2[j].country === obj[i].name) {
                     country += `
                     <h1>
@@ -108,13 +108,13 @@ const cities = function(obj, obj2, obj3, asset) {
                 }
             }
             for (var q = 0; q < obj2.length; q++) {  //language
-                if (obj3[q].country === obj[i].name) {
+                if (obj2[q].country === obj[i].name) {
                     console.log("test");
                     country += `
                         <h1>
                            Cities
                         </h1>
-                        <button class="play1"><h2>${obj2[i].name}</h2></button>
+                        <button class="play1"><h2>${obj2[q].name}</h2></button>
                         <div class="cities">
                             <div class="hiddenCity">
                                 <table>
