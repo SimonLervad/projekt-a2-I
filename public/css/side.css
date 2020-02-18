@@ -22,7 +22,7 @@ body{
   transition: 0.4s;
 }
 
-.active, .play:hover {
+.active, .play:hover, .play1:hover {
   background-color: #ccc; 
 }
 
