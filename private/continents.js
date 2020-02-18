@@ -52,11 +52,11 @@ const cities = function(obj, obj2, obj3, asset) {
     for (var i = 0; i < obj.length; i++) {  //countries
         if (obj[i].continent === h1) {
             let country = `
-
+                <button class="play">${obj[i].name}</button>
                 <div class="countries">
-                    <h2>
+                    <h1>
                         ${obj[i].name}
-                    </h2>
+                    </h1>
                     <div class="hiddenCountry">
                         <table>
                             <tr>
