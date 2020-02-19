@@ -44,9 +44,7 @@ const cities = function(obj, obj2, obj3, asset) {
 
         // dynamic content goes here
 
-    let htmlbot = `</div> <!--hidden-->
-                </div><!--country-->
-                </div> <!--body-->
+    let htmlbot = `
     <script src="script.js"></script>
     </body>
 </html>`;
@@ -137,6 +135,8 @@ const cities = function(obj, obj2, obj3, asset) {
                     `;
                 }
             }
+
+            country += `</div></div>`;
 
             countries += country;
         }
