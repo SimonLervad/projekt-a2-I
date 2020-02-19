@@ -42,7 +42,8 @@ const routes = {                                    // register handles to route
     "POST": {
         "/testpost": handlers.receiveData,
         "/myCountry": handlers.receiveDataCountry,
-        "/myCities": handlers.receiveDataCity
+        "/myCities": handlers.receiveDataCity,
+        "/myLang": handlers.receiveDataCity
     }
 };
 
@@ -101,9 +102,9 @@ exports.route = function(req, res, body) {          // routing
             asset = req.url;
             routes[req.method][asset](req, res, body);
             return;
-        } else if (req.url === "/myCountry" && req.method === "POST" || req.url === "/myCities" && req.method === "POST") {
+        } else if (req.url === "/myCountry" && req.method === "POST" || req.url === "/myCities" && req.method === "POST"|| req.url === "/myLang" && req.method === "POST") {
             asset = req.url;
-            routes[req.method][asset](req, res, body);
+            routes[req.method][asset](req, res, body, asset);
             return;
         } else {
             asset = req.url;

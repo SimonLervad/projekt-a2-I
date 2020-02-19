@@ -44,7 +44,9 @@ const cities = function(obj, obj2, obj3, asset) {
 
         // dynamic content goes here
 
-    let htmlbot = `</div>
+    let htmlbot = `</div> <!--hidden-->
+                </div><!--country-->
+                </div> <!--body-->
     <script src="script.js"></script>
     </body>
 </html>`;
@@ -107,13 +109,11 @@ const cities = function(obj, obj2, obj3, asset) {
                     `;
                 }
             }
+            country += `<h1>Cities</h1>`
             for (var q = 0; q < obj2.length; q++) {  //language
                 if (obj2[q].country === obj[i].name) {
                     console.log("test");
                     country += `
-                        <h1>
-                           Cities
-                        </h1>
                         <button class="play1"><h2>${obj2[q].name}</h2></button>
                         <div class="cities">
                             <div class="hiddenCity">
@@ -133,8 +133,7 @@ const cities = function(obj, obj2, obj3, asset) {
                                 </table>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    
                     `;
                 }
             }

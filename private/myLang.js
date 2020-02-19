@@ -14,7 +14,22 @@ const cities = function(obj) {
     <body>
 
         <div class="info">
-        <h1>Languange</h1>`;
+        <h1>Languange</h1>
+        <form action="/myLang" method="POST">
+			<h3>Add a lanuage</h3>
+			<label>Country: </label><br>
+                <input type="text" name="country" placeholder="Denmark" required></input><br>
+            <label>Language: </label><br>
+				<input type="text" name="language" placeholder="Danish" required></input><br>
+			<label>Speakers: </label><br>
+				<input type="number" name="speakers" placeholder="99" required></input><br>
+			<label>The official languange: </label><br>
+				<select type="text" name="isOfficial" placeholder="isOfficial" required>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</select><br>
+			<button type="submit">OK</button>
+		</form>`;
 
     let htmlbot = `        </div>
     </body>

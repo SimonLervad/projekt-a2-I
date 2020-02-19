@@ -26,7 +26,7 @@ const cities = function(obj) {
 			<label>Capital: </label><br>
 				<select type="text" name="capital" placeholder="Capital" required>
 					<option value="Yes">Yes</option>
-					<option value="no">No</option>
+					<option value="No">No</option>
 				</select><br>
 			<button type="submit">OK</button>
 		</form>`;

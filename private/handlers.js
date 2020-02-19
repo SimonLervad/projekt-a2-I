@@ -77,7 +77,8 @@ module.exports = {
         });
         res.end();
     },
-    receiveDataCity(req, res, data) {
+    receiveDataCity(req, res, data, asset) {
+        asset = asset.substring(1);
         let obj = lib.makeWebArrays(req, data);         // home made GET and POST objects
         res.writeHead(httpStatus.OK, {                  // yes, write relevant header
             "Content-Type": "text/html; charset=utf-8"
@@ -87,38 +88,79 @@ module.exports = {
         const mongo = require('mongodb');
         const dbname = "world";
         const constr = `mongodb://localhost:27017`;
-      
+
         let newCity = { country: obj.POST.country, 
-                           name: obj.POST.city,  
-                           population: obj.POST.population, 
-                           isCapital: obj.POST.capital 
-                        };
-        let findCity = { country: obj.POST.country };
-    
+            name: obj.POST.city,  
+            population: obj.POST.population, 
+            isCapital: obj.POST.capital 
+         };
+        let findCountry = { country: obj.POST.country };
+        let findCity = { country: obj.POST.city };
+        
+        console.log("asset " + asset)
         mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true}, function (error, con) {
             if (error) {
                 throw error;
             }
-            console.log(`Connected to server`);
             const db = con.db(dbname);                  // make dbname the current db
-            /* Update,
-             * updates/inserts city in the database
-             */
-            
-            db.collection("city").findOne(findCity).then(doc => {
-                console.log(doc);
-                if(doc === "null"){
-                    console.log("Den er der ikke");
-                }else{
-                    db.collection("city").updateOne(findCity, {"$set": newCity}, {upsert: true}, function (err, collection) {
-                        if (err) {
-                            throw err;
-                        }
-                        console.log("City inserted/updated");
-                        con.close();
-                    });
-                }
-            });
+            if (asset === "myCities") {
+                
+                /* Update,
+                * updates/inserts city in the database
+                */
+                db.collection("city").findOne(findCountry).then(doc => {
+                    console.log(doc);
+                    if(doc === "null"){
+                        return console.log("Landet er der ikke");
+                    }else{
+                        console.log("Landet er der");
+                        db.collection("city").findOne(findCity).then(doc => {
+                            if(doc === "null"){
+                                db.collection("city").insertOne(newCity, function (err, collection) {
+                                    if (err) {
+                                        throw err;
+                                    }
+                                    console.log("City inserted");
+                                    con.close();
+                                });
+                            }else{
+                                db.collection("city").updateOne(findCity, {"$set": newCity}, {upsert: true}, function (err, collection) {
+                                    if (err) {
+                                        throw err;
+                                    }
+                                    console.log("City inserted/updated");
+                                    con.close();
+                                });
+                            }
+                        });
+                    } 
+                });     
+            }
+            if (asset === "myLang") {
+                let newLang = { country: obj.POST.country, 
+                    speakers: obj.POST.speakers,
+                    language: obj.POST.language, 
+                    isOfficial: obj.POST.isOfficial 
+                };
+                let findLang = { country: obj.POST.country };
+                    /* Update,
+                    * updates/inserts lang in the database
+                    */
+                db.collection("language").findOne(findLang).then(doc => {
+                    console.log(doc);
+                    if(doc === "null"){
+                        console.log("Den er der ikke");
+                    } else{
+                        db.collection("language").updateOne(findLang, {"$set": newLang}, {upsert: true}, function (err, collection) {
+                            if (err) {
+                                throw err;
+                            }
+                            console.log("Lang inserted/updated");
+                            con.close();
+                        });
+                    } 
+                });  
+            }
         });
         res.end();
     },
