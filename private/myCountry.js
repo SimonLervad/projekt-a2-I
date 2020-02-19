@@ -45,13 +45,12 @@ const cities = function(obj) {
 
     let dynamic = "";
     for (var i = 0; i < obj.length; i++) {
-        let heading = `<h2>${obj[i].continent}</h2>\n`;
-        let name = `<p>Name: ${obj[i].name}</p>\n`;
+        let heading = `<h2>${obj[i].name}</h2>\n`;
         let continent = `<p>Continent: ${obj[i].continent}</p>\n`;
-        let area = `<p>Area: ${obj[i].area}</p>\n`;
+        let area = `<p>Area km2: ${obj[i].area}</p>\n`;
         let population = `<p>Population: ${obj[i].population}</p>\n`;
         let governmentForm = `<p>The goverment form: ${obj[i].governmentForm}</p>\n`;
-        dynamic += heading + name + continent + area + population + governmentForm;
+        dynamic += heading + continent + area + population + governmentForm;
     }
     
     return htmltop + dynamic + htmlbot;

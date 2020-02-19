@@ -68,7 +68,7 @@ input, select{
 
 /* The country form */
 
-#countryForm {
+#countryForm, #cityForm, #langForm {
   background-color: #F8F8F8;
   box-shadow: 1px 1px 5px #cfcfcf;
   width: 30%;
@@ -78,7 +78,7 @@ input, select{
   padding-bottom: 2%;
 }
 
-#countryForm button {
+#countryForm button, #cityForm button, #langForm button {
   background-color: #77CD55;
   padding: 20px;
   width: 100%;
@@ -90,11 +90,11 @@ input, select{
   margin-top: 4%;
 }
 
-#countryForm button:hover {
+#countryForm button:hover, #cityForm button:hover, #langForm button:hover {
   background-color: #64AE47;
 }
 
-#countryForm input {
+#countryForm input, #cityForm input, #langForm input {
   padding: 15px;
   margin-left: -30%;
   width: 100%;
@@ -105,20 +105,26 @@ input, select{
   margin-bottom: 6%;
 }
 
-#countryForm ::placeholder {
+#countryForm ::placeholder, #cityForm ::placeholder, #langForm ::placeholder {
   padding-left: 15%;
   color: #B6B4B4;
 }
 
-#countryForm select {
+#countryForm select, #cityForm select, #langForm select {
   width: 100%;
   margin-left: -30%;
   border: none;
   background-color: #89B9E4;
   color: white;
+  margin-top: 4%;
+  height: 50px;
 }
 
-#countryForm option{
+#countryForm option, #cityForm option, #langForm option {
   background-color: #9DCCF7;
   color: white;
+}
+
+#countryForm label, #cityForm label, #langForm label {
+  margin-left: -25%;
 }

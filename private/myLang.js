@@ -38,12 +38,12 @@ const cities = function(obj) {
     let dynamic = "";
 
     for (var i = 0; i < obj.length; i++) {
-       let country = `<p><h2>Country: ${obj[i].country}</h2></p>\n`;
-       let language = `<p>Language: ${obj[i].language}</p>\n`;
+        let language = `<h2>${obj[i].language}</h2>\n`;
+       let country = `<p>Country: ${obj[i].country}</p>\n`;
        let speakers = `<p>Speakers: ${obj[i].speakers}</p>\n`;
        let isOfficial = `<p>Is official: ${obj[i].isOfficial}</p>\n`;
 
-       dynamic += country + language + speakers + isOfficial;
+       dynamic += language + country + speakers + isOfficial;
 
    }
 
