@@ -14,21 +14,40 @@ input, select{
     background-color: #fff;
 }
 
+/* Continent dropdown */
+
 .play, .play1 {
-  background-color: #eee;
-  color: #444;
+  color: white;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  width: 80%;
   border: none;
   text-align: left;
-  outline: none;
   font-size: 15px;
   transition: 0.4s;
+  margin-left: 10%;
+  margin-bottom: 2%;
+  border-radius: 50px;
+  text-align: center;
 }
 
-.active, .play:hover, .play1:hover {
-  background-color: #ccc; 
+.play {
+  background-color: #F19724;
+  font-weight: lighter;
+}
+
+.active, .play:hover {
+  background-color: #CF7B0F; 
+}
+
+
+.play1 {
+  margin-left: 0%;
+  background-color: #77CD55;
+}
+
+.play1:hover {
+  background-color: #64AE47;
 }
 
 .countries, .cities {
@@ -40,13 +59,66 @@ input, select{
 
 .info h1 {
 	text-align: center;
-	font-size: 60px;
+  font-size: 60px;
 }
 
-.info p, .info h2, .info input, .info select, .info label, .info button, .info h3{
-	margin-left: 200px;
+.info p, .info h2{
+  margin-left: 200px;
 }
 
-#countryForm{
-  
+/* The country form */
+
+#countryForm {
+  background-color: #F8F8F8;
+  box-shadow: 1px 1px 5px #cfcfcf;
+  width: 30%;
+  margin: auto;
+  padding-left: 150px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+#countryForm button {
+  background-color: #77CD55;
+  padding: 20px;
+  width: 100%;
+  border-radius: 35px;
+  color: white;
+  box-shadow: 1px 1px 3px #cfcfcf;
+  font-size: 15px;
+  margin-left: -30%;
+  margin-top: 4%;
+}
+
+#countryForm button:hover {
+  background-color: #64AE47;
+}
+
+#countryForm input {
+  padding: 15px;
+  margin-left: -30%;
+  width: 100%;
+  border-radius: 35px;
+  border: none;
+  box-shadow: 1px 1px 3px #cfcfcf;
+  margin-top: 4%;
+  margin-bottom: 6%;
+}
+
+#countryForm ::placeholder {
+  padding-left: 15%;
+  color: #B6B4B4;
+}
+
+#countryForm select {
+  width: 100%;
+  margin-left: -30%;
+  border: none;
+  background-color: #89B9E4;
+  color: white;
+}
+
+#countryForm option{
+  background-color: #9DCCF7;
+  color: white;
 }

@@ -20,7 +20,7 @@ const cities = function(obj) {
 		<label>Country: </label><br>
 			<input type="text" name="country" placeholder="Denmark" required></input><br>
 		<label>Continent: </label><br>
-			<select type="text" name="continent" placeholder="Continent" required>
+			    <select type="text" name="continent" placeholder="Continent" required>
 				<option value="Africa">Africa</option>
 				<option value="Antarctica">Antarctica</option>
 				<option value="Australia">Australia</option>

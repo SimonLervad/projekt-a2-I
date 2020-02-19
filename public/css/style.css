@@ -57,7 +57,6 @@ main {
 	color:white;
 	text-decoration: none;
 	border-radius: 80px;
-	font-weight: 500;
 	font-size: x-large;
 	box-shadow: 1px 1px 8px #cfcfcf;
 }
@@ -88,20 +87,22 @@ main {
 	margin:auto;
 	display:block;
 	padding:10px;
-	border-bottom:1px solid grey;
+	border-bottom:1px solid #cfcfcf;
+	margin-bottom: 5%;
 }
 #body h1 {
 	text-align:center;
 }
 
 .countries {
-	width:80%;
-	border:1px solid black;
+	width:70%;
 	margin:10px auto;
+	margin-bottom: 4%;
+	padding-bottom: 4%;
 	text-align:center;
+	box-shadow: 1px 1px 5px #cfcfcf;
 }
 .countries table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 75%;
   margin:auto;	
