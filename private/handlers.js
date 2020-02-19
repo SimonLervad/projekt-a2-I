@@ -110,7 +110,7 @@ module.exports = {
                 */
                 db.collection("city").findOne(findCountry).then(doc => {
                     console.log(doc);
-                    if(doc === "null"){
+                    if(doc === null){
                         return console.log("Landet er der ikke");
                     }else{
                         console.log("Landet er der");
