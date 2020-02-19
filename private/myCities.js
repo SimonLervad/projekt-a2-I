@@ -14,7 +14,22 @@ const cities = function(obj) {
     </head>
     <body>
         <div class="info">
-        <h1>Cities</h1>`;
+        <h1>Cities</h1>
+        <form action="/myCities" method="POST" id="cityForm">
+			<h3>Add new city</h3>
+			<label>Country: </label><br>
+				<input type="text" name="country" placeholder="Denmark" required></input><br>
+			<label>City: </label><br>
+				<input type="text" name="city" placeholder="Kolding" required></input><br>
+			<label>Population: </label><br>
+				<input type="number" name="population" placeholder="57583"></input><br>
+			<label>Capital: </label><br>
+				<select type="text" name="capital" placeholder="Capital" required>
+					<option value="Yes">Yes</option>
+					<option value="no">No</option>
+				</select><br>
+			<button type="submit">OK</button>
+		</form>`;
 
     let htmlbot = `        </div>
     </body>

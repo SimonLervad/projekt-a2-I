@@ -41,7 +41,8 @@ const routes = {                                    // register handles to route
 
     "POST": {
         "/testpost": handlers.receiveData,
-        "/myCountry": handlers.receiveData
+        "/myCountry": handlers.receiveDataCountry,
+        "/myCities": handlers.receiveDataCity
     }
 };
 
@@ -100,7 +101,7 @@ exports.route = function(req, res, body) {          // routing
             asset = req.url;
             routes[req.method][asset](req, res, body);
             return;
-        } else if (req.url === "/myCountry" && req.method === "POST") {
+        } else if (req.url === "/myCountry" && req.method === "POST" || req.url === "/myCities" && req.method === "POST") {
             asset = req.url;
             routes[req.method][asset](req, res, body);
             return;

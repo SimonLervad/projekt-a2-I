@@ -39,7 +39,7 @@ module.exports = {
         }
     },
 
-    receiveData(req, res, data) {
+    receiveDataCountry(req, res, data) {
         let obj = lib.makeWebArrays(req, data);         // home made GET and POST objects
         res.writeHead(httpStatus.OK, {                  // yes, write relevant header
             "Content-Type": "text/html; charset=utf-8"
@@ -71,17 +71,56 @@ module.exports = {
                 if (err) {
                     throw err;
                 }
-                console.log("City inserted/updated");
+                console.log("Country inserted/updated");
                 con.close();
             });
         });
         res.end();
+    },
+    receiveDataCity(req, res, data) {
+        let obj = lib.makeWebArrays(req, data);         // home made GET and POST objects
+        res.writeHead(httpStatus.OK, {                  // yes, write relevant header
+            "Content-Type": "text/html; charset=utf-8"
+        });
+        res.write(experimental.receipt(obj));           // home made templating for native node
 
-
-
-
-
-
+        const mongo = require('mongodb');
+        const dbname = "world";
+        const constr = `mongodb://localhost:27017`;
+      
+        let newCity = { country: obj.POST.country, 
+                           name: obj.POST.city,  
+                           population: obj.POST.population, 
+                           isCapital: obj.POST.capital 
+                        };
+        let findCity = { country: obj.POST.country };
+    
+        mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true}, function (error, con) {
+            if (error) {
+                throw error;
+            }
+            console.log(`Connected to server`);
+            const db = con.db(dbname);                  // make dbname the current db
+            /* Update,
+             * updates/inserts city in the database
+             */
+            
+            db.collection("city").findOne(findCity).then(doc => {
+                console.log(doc);
+                if(doc === "null"){
+                    console.log("Den er der ikke");
+                }else{
+                    db.collection("city").updateOne(findCity, {"$set": newCity}, {upsert: true}, function (err, collection) {
+                        if (err) {
+                            throw err;
+                        }
+                        console.log("City inserted/updated");
+                        con.close();
+                    });
+                }
+            });
+        });
+        res.end();
     },
 
     dbRead(req, res, asset) {
@@ -96,11 +135,8 @@ module.exports = {
             }
             const db = con.db(dbname);                  // make dbname the current db
             /* Retrieve,
-             * reads cities from the database
+             * reads everything from the database
              */
-
-
-
             db.collection(asset).find().sort({continent : 1, country : 1, }).toArray(function (err, city) {
 
                 if (err) {
