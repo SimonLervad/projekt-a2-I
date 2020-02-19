@@ -15,7 +15,7 @@ const cities = function(obj) {
 
         <div class="info">
         <h1>Languange</h1>
-        <form action="/myLang" method="POST">
+        <form action="/myLang" method="POST" id="langForm">
 			<h3>Add a lanuage</h3>
 			<label>Country: </label><br>
                 <input type="text" name="country" placeholder="Denmark" required></input><br>

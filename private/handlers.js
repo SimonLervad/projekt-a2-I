@@ -95,7 +95,7 @@ module.exports = {
             isCapital: obj.POST.capital 
          };
         let findCountry = { country: obj.POST.country };
-        let findCity = { country: obj.POST.city };
+        let findCity = { city: obj.POST.city };
         
         console.log("asset " + asset)
         mongo.connect(constr, { useNewUrlParser: true, useUnifiedTopology: true}, function (error, con) {
