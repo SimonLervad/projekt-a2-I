@@ -148,7 +148,7 @@ module.exports = {
                     */
                 db.collection("language").findOne(findLang).then(doc => {
                     console.log(doc);
-                    if(doc === "null"){
+                    if(doc === null){
                         console.log("Den er der ikke");
                     } else{
                         db.collection("language").updateOne(findLang, {"$set": newLang}, {upsert: true}, function (err, collection) {
