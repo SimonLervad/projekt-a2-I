@@ -2,6 +2,11 @@ body{
     background-color: #009EE3;
 }
 
+input, select{
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
 .info{
     width: 80%;
     margin: 0 auto;
@@ -31,4 +36,17 @@ body{
   display: none;
   background-color: white;
   overflow: hidden;
+}
+
+.info h1 {
+	text-align: center;
+	font-size: 60px;
+}
+
+.info p, .info h2, .info input, .info select, .info label, .info button, .info h3{
+	margin-left: 200px;
+}
+
+#countryForm{
+  
 }

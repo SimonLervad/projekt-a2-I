@@ -40,7 +40,8 @@ const routes = {                                    // register handles to route
     },
 
     "POST": {
-        "/testpost": handlers.receiveData
+        "/testpost": handlers.receiveData,
+        "/myCountry": handlers.receiveData
     }
 };
 
@@ -96,6 +97,10 @@ exports.route = function(req, res, body) {          // routing
             routes[req.method][asset](req, res, asset);
             return;
         } else if (req.url === "/testpost" && req.method === "POST") {
+            asset = req.url;
+            routes[req.method][asset](req, res, body);
+            return;
+        } else if (req.url === "/myCountry" && req.method === "POST") {
             asset = req.url;
             routes[req.method][asset](req, res, body);
             return;

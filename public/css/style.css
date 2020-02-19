@@ -116,11 +116,3 @@ main {
 .countries tr:nth-child(even) {
   background-color: #dddddd;
 }
-.info h1 {
-	text-align: center;
-	font-size: 60px;
-}
-
-.info p, h2{
-	margin-left: 200px;
-}
