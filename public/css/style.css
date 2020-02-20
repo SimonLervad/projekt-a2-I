@@ -107,11 +107,11 @@ main {
 	margin:50px auto;
 	text-align:center;
 }
-.country, .city h2 {
+.country h2, .city h2 {
 	width:100%;
 	margin:10px 0;
 }
-.country, .city table {
+.country table, .city table {
 	width:100%;
 }
 table {
