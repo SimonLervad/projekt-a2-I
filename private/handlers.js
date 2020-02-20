@@ -7,6 +7,7 @@ const fs = require("fs");                           // file system access
 const httpStatus = require("http-status-codes");
 const lib = require("../private/libWebUtil");           // home grown utilities
 const experimental = require("../private/myTemplater"); // highly experimental template
+const notThere = require("../private/myTemplater2"); // highly experimental template
 const experimental1 = require("../private/myCountry"); // highly experimental template
 const experimental2 = require("../private/myCities"); // highly experimental template
 const experimental3 = require("../private/myLang"); // highly experimental template
@@ -44,7 +45,7 @@ module.exports = {
         res.writeHead(httpStatus.OK, {                  // yes, write relevant header
             "Content-Type": "text/html; charset=utf-8"
         });
-        res.write(experimental.receipt(obj));           // home made templating for native node
+        res.write(experimental.receipt(obj));
 
         const mongo = require('mongodb');
         const dbname = "world";
@@ -111,27 +112,17 @@ module.exports = {
                 db.collection("city").findOne(findCountry).then(doc => {
                     console.log(doc);
                     if(doc === null){
-                        return console.log("Landet er der ikke");
+                        console.log("Landet er der ikke");
                     }else{
                         console.log("Landet er der");
                         db.collection("city").findOne(findCity).then(doc => {
-                            if(doc === "null"){
-                                db.collection("city").insertOne(newCity, function (err, collection) {
-                                    if (err) {
-                                        throw err;
-                                    }
-                                    console.log("City inserted");
-                                    con.close();
-                                });
-                            }else{
-                                db.collection("city").updateOne(findCity, {"$set": newCity}, {upsert: true}, function (err, collection) {
-                                    if (err) {
-                                        throw err;
-                                    }
-                                    console.log("City inserted/updated");
-                                    con.close();
-                                });
-                            }
+                            db.collection("city").updateOne(findCity, {"$set": newCity}, {upsert: true}, function (err, collection) {
+                                if (err) {
+                                    throw err;
+                                }
+                                console.log("City updated");
+                                con.close();
+                            });
                         });
                     } 
                 });     

@@ -8,20 +8,20 @@ const receipt = function(obj) {
     <head>
         <meta charset="utf-8"/>
         <title>Cities</title>
-        <link rel="stylesheet" href="side.css"/>
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" type="text/css" href="side.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <script src="menu.js"></script>
 
     </head>
     <body>
-        <div>`;
+        <div class="info">`;
 
     let htmlbot = `        </div>
     </body>
 </html>`;
 
     let dynamic = `
-
+    <p>Your informations are now on the site</p>
     <p>You entered the following</p>
             <h3>Country</h3>
             <p>${obj.POST.country}</p>
