@@ -127,7 +127,7 @@ const cities = function(obj) {
         dynamic += heading + continent + area + population + governmentForm;
         */
     }
-    dynamic += eu + as + af + na + sa + au + an
+    dynamic += eu + as + af + na + sa + au + an;
     
     return htmltop + dynamic + htmlbot;
 }
