@@ -7,6 +7,7 @@ const fs = require("fs");                           // file system access
 const httpStatus = require("http-status-codes");
 const lib = require("../private/libWebUtil");           // home grown utilities
 const experimental = require("../private/myTemplater"); // highly experimental template
+const notThere = require("../private/myTemplater2"); // highly experimental template
 const experimental1 = require("../private/myCountry"); // highly experimental template
 const experimental2 = require("../private/myCities"); // highly experimental template
 const experimental3 = require("../private/myLang"); // highly experimental template
@@ -44,7 +45,7 @@ module.exports = {
         res.writeHead(httpStatus.OK, {                  // yes, write relevant header
             "Content-Type": "text/html; charset=utf-8"
         });
-        res.write(experimental.receipt(obj));           // home made templating for native node
+        res.write(experimental.receipt(obj));
 
         const mongo = require('mongodb');
         const dbname = "world";
@@ -83,7 +84,7 @@ module.exports = {
         res.writeHead(httpStatus.OK, {                  // yes, write relevant header
             "Content-Type": "text/html; charset=utf-8"
         });
-        res.write(experimental.receipt(obj));           // home made templating for native node
+        //res.write(experimental.receipt(obj));           // home made templating for native node
 
         const mongo = require('mongodb');
         const dbname = "world";
@@ -111,10 +112,14 @@ module.exports = {
                 db.collection("city").findOne(findCountry).then(doc => {
                     console.log(doc);
                     if(doc === null){
-                        return console.log("Landet er der ikke");
+                        console.log("Landet er der ikke");
+                        res.write(notThere.receipt(obj.POST));
+                        con.close();
+                        res.end();
                     }else{
                         console.log("Landet er der");
                         db.collection("city").findOne(findCity).then(doc => {
+<<<<<<< HEAD
                             if(doc === null){
                                 db.collection("city").insertOne(newCity, function (err, collection) {
                                     if (err) {
@@ -132,6 +137,17 @@ module.exports = {
                                     con.close();
                                 });
                             }
+=======
+                            db.collection("city").updateOne(findCity, {"$set": newCity}, {upsert: true}, function (err, collection) {
+                                if (err) {
+                                    throw err;
+                                }
+                                console.log("City updated");
+                                res.write(experimental.receipt(obj));
+                                con.close();
+                                res.end();
+                            });
+>>>>>>> dcc420d380ef4acf7bd4316be8bfeec4dcd4fd9a
                         });
                     } 
                 });     
@@ -150,19 +166,23 @@ module.exports = {
                     console.log(doc);
                     if(doc === null){
                         console.log("Den er der ikke");
+                        res.write(notThere.receipt(obj.POST));
+                        con.close();
+                        res.end();
                     } else{
                         db.collection("language").updateOne(findLang, {"$set": newLang}, {upsert: true}, function (err, collection) {
                             if (err) {
                                 throw err;
                             }
                             console.log("Lang inserted/updated");
+                            res.write(experimental.receipt(obj));
                             con.close();
+                            res.end();
                         });
                     } 
                 });  
             }
         });
-        res.end();
     },
 
     dbRead(req, res, asset) {

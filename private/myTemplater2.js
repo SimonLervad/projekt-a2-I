@@ -8,8 +8,8 @@ const receipt = function(obj) {
     <head>
         <meta charset="utf-8"/>
         <title>Tilføjelse</title>
-        <link rel="stylesheet" type="text/css" href="side.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="side.css">
         <script src="menu.js"></script>
 
     </head>
@@ -21,7 +21,8 @@ const receipt = function(obj) {
 </html>`;
 
     let dynamic = `
-    <p>Your informations are now on the site</p>
+    <p>Your informations are not on the site</p>
+    <p>The country is not there</p>
 
     `;
 
