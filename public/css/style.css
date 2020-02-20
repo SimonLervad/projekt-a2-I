@@ -117,3 +117,7 @@ main {
 .countries tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.hiddenCity {
+	margin-bottom: 4%;
+}

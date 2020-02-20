@@ -115,7 +115,7 @@ module.exports = {
                     }else{
                         console.log("Landet er der");
                         db.collection("city").findOne(findCity).then(doc => {
-                            if(doc === "null"){
+                            if(doc === null){
                                 db.collection("city").insertOne(newCity, function (err, collection) {
                                     if (err) {
                                         throw err;
