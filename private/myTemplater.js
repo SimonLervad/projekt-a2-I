@@ -22,7 +22,6 @@ const receipt = function(obj) {
 
     let dynamic = `
     <p>Your informations are now on the site</p>
-    <p>The country is not there</p>
 
     `;
 
