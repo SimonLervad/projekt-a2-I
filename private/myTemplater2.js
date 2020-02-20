@@ -7,10 +7,10 @@ const receipt = function(obj) {
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Cities</title>
-        <script src="menu.js"></script>
+        <title>Tilføjelse</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="side.css">
+        <script src="menu.js"></script>
 
     </head>
     <body>

@@ -84,7 +84,7 @@ module.exports = {
         res.writeHead(httpStatus.OK, {                  // yes, write relevant header
             "Content-Type": "text/html; charset=utf-8"
         });
-        res.write(experimental.receipt(obj));           // home made templating for native node
+        //res.write(experimental.receipt(obj));           // home made templating for native node
 
         const mongo = require('mongodb');
         const dbname = "world";
@@ -113,6 +113,9 @@ module.exports = {
                     console.log(doc);
                     if(doc === null){
                         console.log("Landet er der ikke");
+                        res.write(notThere.receipt(obj.POST));
+                        con.close();
+                        res.end();
                     }else{
                         console.log("Landet er der");
                         db.collection("city").findOne(findCity).then(doc => {
@@ -121,7 +124,9 @@ module.exports = {
                                     throw err;
                                 }
                                 console.log("City updated");
+                                res.write(experimental.receipt(obj));
                                 con.close();
+                                res.end();
                             });
                         });
                     } 
@@ -141,19 +146,23 @@ module.exports = {
                     console.log(doc);
                     if(doc === null){
                         console.log("Den er der ikke");
+                        res.write(notThere.receipt(obj.POST));
+                        con.close();
+                        res.end();
                     } else{
                         db.collection("language").updateOne(findLang, {"$set": newLang}, {upsert: true}, function (err, collection) {
                             if (err) {
                                 throw err;
                             }
                             console.log("Lang inserted/updated");
+                            res.write(experimental.receipt(obj));
                             con.close();
+                            res.end();
                         });
                     } 
                 });  
             }
         });
-        res.end();
     },
 
     dbRead(req, res, asset) {
