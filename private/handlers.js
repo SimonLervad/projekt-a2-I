@@ -119,25 +119,6 @@ module.exports = {
                     }else{
                         console.log("Landet er der");
                         db.collection("city").findOne(findCity).then(doc => {
-<<<<<<< HEAD
-                            if(doc === null){
-                                db.collection("city").insertOne(newCity, function (err, collection) {
-                                    if (err) {
-                                        throw err;
-                                    }
-                                    console.log("City inserted");
-                                    con.close();
-                                });
-                            }else{
-                                db.collection("city").updateOne(findCity, {"$set": newCity}, {upsert: true}, function (err, collection) {
-                                    if (err) {
-                                        throw err;
-                                    }
-                                    console.log("City inserted/updated");
-                                    con.close();
-                                });
-                            }
-=======
                             db.collection("city").updateOne(findCity, {"$set": newCity}, {upsert: true}, function (err, collection) {
                                 if (err) {
                                     throw err;
@@ -147,7 +128,6 @@ module.exports = {
                                 con.close();
                                 res.end();
                             });
->>>>>>> dcc420d380ef4acf7bd4316be8bfeec4dcd4fd9a
                         });
                     } 
                 });     
