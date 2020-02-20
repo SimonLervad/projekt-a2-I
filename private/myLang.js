@@ -38,21 +38,41 @@ const cities = function(obj) {
     let dynamic = "";
 
     for (var i = 0; i < obj.length; i++) {
+        let info = `
+                <div class="city">
+                    <h2>${obj[i].language}</h2>
+                    <table>
+                        <tr>
+                            <td>Country</td>
+                            <td>${obj[i].country}</td>
+                        </tr>
+                        <tr>
+                            <td>Speakers</td>
+                            <td>${obj[i].speakers}</td>
+                        </tr>
+                        <tr>
+                            <td>Is official</td>
+                            <td>${obj[i].isOfficial}</td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+        if (i === 0) {
+            dynamic += `<div><h1>${obj[i].country}</h1></div>`;
+        } else if (obj[i].country != obj[i - 1].country) {
+            dynamic += `<div><h1>${obj[i].country}</h1></div>`;
+        }
+        dynamic += info;
+    } 
+
+    return htmltop + dynamic + htmlbot;
+    /*
+    for (var i = 0; i < obj.length; i++) {
         let language = `<h2>${obj[i].language}</h2>\n`;
        let country = `<p>Country: ${obj[i].country}</p>\n`;
        let speakers = `<p>Speakers: ${obj[i].speakers}</p>\n`;
        let isOfficial = `<p>Is official: ${obj[i].isOfficial}</p>\n`;
-
-       dynamic += language + country + speakers + isOfficial;
-
-   }
-
-
-/*
-    dynamic += `<p>Country: ${obj[0].country} </br> Language: ${obj[0].language} </br> Speakers: ${obj[0].speakers} </br> Is official: ${obj[0].isOfficial}</p>`;
-*/
-
-    return htmltop + dynamic + htmlbot;
+       */
 }
 
 exports.cities = cities;

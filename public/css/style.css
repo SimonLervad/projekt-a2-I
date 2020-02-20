@@ -102,16 +102,16 @@ main {
 	text-align:center;
 	box-shadow: 1px 1px 5px #cfcfcf;
 }
-.country {
+.country, .city {
 	width:50%;
 	margin:50px auto;
 	text-align:center;
 }
-.country h2 {
+.country, .city h2 {
 	width:100%;
 	margin:10px 0;
 }
-.country table {
+.country, .city table {
 	width:100%;
 }
 table {

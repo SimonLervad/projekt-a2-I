@@ -38,11 +38,38 @@ const cities = function(obj) {
     let dynamic = "";
 
     for (var i = 0; i < obj.length; i++) {
+        let info = `
+                <div class="city">
+                    <h2>${obj[i].name}</h2>
+                    <table>
+                        <tr>
+                            <td>Population</td>
+                            <td>${obj[i].population}</td>
+                        </tr>
+                        <tr>
+                            <td>Is capital</td>
+                            <td>${obj[i].isCapital}</td>
+                        </tr>
+                        <tr>
+                            <td>Country</td>
+                            <td>${obj[i].country}</td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+        if (i === 0) {
+            dynamic += `<div><h1>${obj[i].country}</h1></div>`;
+        } else if (obj[i].country != obj[i - 1].country) {
+            dynamic += `<div><h1>${obj[i].country}</h1></div>`;
+        }
+        dynamic += info;
+        /*
         let name = `<p><h2>${obj[i].name}</h2></p>\n`;
         let capital = `<p>Is capital: ${obj[i].isCapital}</p>\n`;
         let population = `<p>Population: ${obj[i].population}</p>\n`;
         let country = `<p>Country: ${obj[i].country}</p>\n`;
         dynamic += name + capital + population + country;
+        */
     } 
 
     return htmltop + dynamic + htmlbot;
