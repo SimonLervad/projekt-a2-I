@@ -44,14 +44,90 @@ const cities = function(obj) {
 </html>`;
 
     let dynamic = "";
+    let au = `
+        <div>
+            <h1>Australia</h1>
+        </div>
+    `;
+    let sa = `
+        <div>
+            <h1>South America</h1>
+        </div>
+    `;
+    let na = `
+        <div>
+            <h1>North America</h1>
+        </div>
+    `;
+    let eu = `
+        <div>
+            <h1>Europe</h1>
+        </div>
+    `;
+    let as = `
+        <div>
+            <h1>Asia</h1>
+        </div>
+    `;
+    let af = `
+        <div>
+            <h1>Africa</h1>
+        </div>
+    `;
+    let an = `
+        <div>
+            <h1>Antarctica</h1>
+        </div>
+    `;
     for (var i = 0; i < obj.length; i++) {
+        let info = `
+             <div class="country">
+                <h2>${obj[i].name}</h2>
+                <table>
+                    <tr>
+                        <td>Continent</td>
+                        <td>${obj[i].continent}</td>
+                    </tr>
+                    <tr>
+                        <td>Area km2</td>
+                        <td>${obj[i].area}</td>
+                    </tr>
+                    <tr>
+                        <td>Population</td>
+                        <td>${obj[i].population}</td>
+                    </tr>
+                    <tr>
+                        <td>The government form</td>
+                        <td>${obj[i].governmentForm}</td>
+                    </tr>
+                </table>
+            </div>
+        `;
+        if (obj[i].continent === "Australia") {
+            au += info;
+        } else if (obj[i].continent === "North America") {
+            na += info;
+        } else if (obj[i].continent === "South America") {
+            sa += info;
+        } else if (obj[i].continent === "Africa") {
+            af += info;
+        } else if (obj[i].continent === "Asia") {
+            as += info;
+        } else if (obj[i].continent === "Europe") {
+            eu += info;
+        } else if (obj[i].continent === "Antarctica") {
+            an += info;
+        }
+        /*
         let heading = `<h2>${obj[i].name}</h2>\n`;
         let continent = `<p>Continent: ${obj[i].continent}</p>\n`;
         let area = `<p>Area km2: ${obj[i].area}</p>\n`;
         let population = `<p>Population: ${obj[i].population}</p>\n`;
         let governmentForm = `<p>The goverment form: ${obj[i].governmentForm}</p>\n`;
         dynamic += heading + continent + area + population + governmentForm;
+        */
     }
+    dynamic += eu + sa + na + as + an + au + af
     
     return htmltop + dynamic + htmlbot;
 }
